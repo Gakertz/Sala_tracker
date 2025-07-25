@@ -1,0 +1,204 @@
+/* Estilo base */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #004990;
+  margin-top: 2rem;
+}
+
+/* Contenedores */
+div {
+  max-width: 960px;
+  margin: auto;
+  padding: 1rem;
+}
+
+/* Tabla de calendario */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 2rem; /* Ajustable */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+th {
+  background-color: #004990;
+  color: white;
+}
+
+/* Botones */
+button {
+  background-color: #004990;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #003670;
+}
+
+/* Botón centrado */
+.boton-centrado {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 2rem;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 2rem;
+}
+
+/* Formulario */
+form {
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+  margin: 1.5rem auto;
+  max-width: 500px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #333;
+}
+
+form button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Lista de reservas */
+#registro-salas p {
+  background-color: white;
+  padding: 0.75rem;
+  border-left: 5px solid #004990;
+  margin: 0.5rem 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  td::before {
+    position: absolute;
+    top: 0.75rem;
+    left: 1rem;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #555;
+  }
+
+  td:nth-of-type(1)::before { content: "Hora Inicio"; }
+  td:nth-of-type(2)::before { content: "Hora Fin"; }
+  td:nth-of-type(3)::before { content: "Asignatura"; }
+  td:nth-of-type(4)::before { content: "Sala"; }
+  td:nth-of-type(5)::before { content: "Profesor"; }
+
+  table {
+    font-size: 2rem;
+  }
+
+  form input,
+  form label {
+    font-size: 2rem;
+  }
+}
+/* Controles de calendario */
+.calendario-controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Botones de flechas */
+.calendario-controles button {
+  background-color: #004990;
+  color: white;
+  border: none;
+  height: 50px;
+  padding: 0.rem 0.5rem;
+  font-size: 1.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.calendario-controles button:hover {
+  background-color: #003670;
+}
+
+/* Input de fecha */
+#fecha-calendario {
+  width: 400px;
+  height: 50px;
+  padding: 0.2rem;
+  text-align: center;
+  font-size: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Botón ver día */
+.boton-ver-dia {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.boton-ver-dia button {
+  font-size: 2rem;
+  padding: 0.6rem 1.2rem;
+}
+

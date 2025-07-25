@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Uso de Salas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Registro de Uso de Salas</h1>
+  <div id="registro-salas"></div>
+  <button id="mostrarFormulario">Pedir Sala</button>
+
+  <form id="formularioReserva" style="display: none;">
+    <input type="text" name="docente" placeholder="Nombre del docente" required />
+    <input type="text" name="sala" placeholder="Sala (ej: 1A)" required />
+    <input type="date" name="fecha" required />
+    <input type="time" name="horaInicio" required />
+    <input type="time" name="horaFin" required />
+    <button type="submit">Reservar</button>
+  </form>
+
+  <script>
+    const btn = document.getElementById('mostrarFormulario');
+    const form = document.getElementById('formularioReserva');
+
+    btn.onclick = () => form.style.display = form.style.display === 'none' ? 'block' : 'none';
+
+    async function cargarReservas() {
+      const res = await fetch('/api/reservas');
+      const data = await res.json();
+      const container = document.getElementById('registro-salas');
+      container.innerHTML = '';
+      data.forEach(r => {
+        container.innerHTML += `<p>${r.fecha} - Sala ${r.sala}: ${r.horaInicio} a ${r.horaFin} (Docente: ${r.docente})</p>`;
+      });
+    }
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      const res = await fetch('/api/reservas', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+
+      if (!res.ok) {
+        alert('Conflicto de horario');
+      } else {
+        form.reset();
+        form.style.display = 'none';
+        cargarReservas();
+      }
+    };
+
+    cargarReservas();
+  </script>
+</body>
+</html>

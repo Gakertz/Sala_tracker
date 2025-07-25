@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uso de Salas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Registro de Uso de Salas</h1>
+
+  <!-- Calendario por día -->
+  <div class="calendario-dia">
+    <div class="calendario-controles">
+      <button id="dia-anterior" title="Día anterior">⟨</button>
+      <input type="date" id="fecha-calendario" />
+      <button id="dia-siguiente" title="Día siguiente">⟩</button>
+    </div>
+    <div class="boton-ver-dia">
+      <button onclick="cargarCalendario()">Ver Día</button>
+    </div>
+
+    <h2>Reservas registradas</h2>
+    <table id="tabla-calendario">
+      <thead>
+        <tr>
+          <th>Hora Inicio</th>
+          <th>Hora Fin</th>
+          <th>Sala</th>
+          <th>Profesor</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Botón centrado para pedir sala -->
+  <div class="boton-centrado">
+    <button id="mostrarFormulario">Pedir Sala</button>
+  </div>
+
+  <!-- Formulario de reserva -->
+  <form id="formularioReserva" style="display: none;">
+    <label for="docente">Nombre del docente</label>
+    <input type="text" name="docente" id="docente" required />
+
+    <label for="sala">Sala (ej: 1A)</label>
+    <input type="text" name="sala" id="sala" required />
+
+    <label for="fecha">Fecha</label>
+    <input type="date" name="fecha" id="fecha" required />
+
+    <label for="horaInicio">Hora de inicio</label>
+    <input type="time" name="horaInicio" id="horaInicio" required />
+
+    <label for="horaFin">Hora de fin</label>
+    <input type="time" name="horaFin" id="horaFin" required />
+
+    <button type="submit">Reservar</button>
+  </form>
+
+  <!-- Script externo -->
+  <script src="script.js"></script>
+</body>
+</html>

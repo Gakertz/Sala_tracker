@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendario de Salas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Calendario de Uso de Salas</h1>
+    <input type="date" id="fecha" />
+    <button onclick="cargarCalendario()">Ver Día</button>
+  </header>
+  <main>
+    <table id="calendario">
+      <thead>
+        <tr>
+          <th>Hora Inicio</th>
+          <th>Hora Fin</th>
+          <th>Asignatura</th>
+          <th>Sala</th>
+          <th>Profesor</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+  <script>
+    function cargarCalendario() {
+      const fecha = document.getElementById("fecha").value;
+      fetch('/api/calendario/' + fecha)
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.querySelector("#calendario tbody");
+          tbody.innerHTML = "";
+          data.forEach(reserva => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${reserva.hora_inicio}</td>
+              <td>${reserva.hora_fin}</td>
+              <td>${reserva.asignatura}</td>
+              <td>${reserva.sala}</td>
+              <td>${reserva.profesor}</td>
+            `;
+            tbody.appendChild(row);
+          });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const hoy = new Date().toISOString().split("T")[0];
+      document.getElementById("fecha").value = hoy;
+      cargarCalendario();
+    });
+  </script>
+</body>
+</html>
