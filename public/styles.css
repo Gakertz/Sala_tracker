@@ -30,7 +30,9 @@ table {
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-size: 2rem; /* Ajustable */
+  font-size: 2vw; /* Escalable con el ancho */
+  table-layout: fixed;
+  word-wrap: break-word;
 }
 
 th, td {
@@ -114,47 +116,6 @@ form button {
   border-radius: 4px;
 }
 
-/* Responsive para móviles 
-@media (max-width: 768px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-
-  thead {
-    display: none;
-  }
-
-  td {
-    position: relative;
-    padding-left: 50%;
-    text-align: left;
-  }
-
-  td::before {
-    position: absolute;
-    top: 0.75rem;
-    left: 1rem;
-    width: 45%;
-    white-space: nowrap;
-    font-weight: bold;
-    color: #555;
-  }
-
-  td:nth-of-type(1)::before { content: "Hora Inicio"; }
-  td:nth-of-type(2)::before { content: "Hora Fin"; }
-  td:nth-of-type(3)::before { content: "Asignatura"; }
-  td:nth-of-type(4)::before { content: "Sala"; }
-  td:nth-of-type(5)::before { content: "Profesor"; }
-
-  table {
-    font-size: 2rem;
-  }
-
-  form input,
-  form label {
-    font-size: 2rem;
-  }
-}*/
 /* Controles de calendario */
 .calendario-controles {
   display: flex;
@@ -170,7 +131,7 @@ form button {
   color: white;
   border: none;
   height: 50px;
-  padding: 0.rem 0.5rem;
+  padding: 0.2rem 0.5rem;
   font-size: 1.8rem;
   border-radius: 4px;
   cursor: pointer;
@@ -202,3 +163,25 @@ form button {
   padding: 0.6rem 1.2rem;
 }
 
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  table {
+    font-size: 3.5vw;
+  }
+
+  th, td {
+    padding: 0.5rem;
+  }
+
+  /*.calendario-controles {
+    flex-direction: column;
+  }*/
+
+  #fecha-calendario {
+    width: 100%;
+  }
+
+  form, input, button {
+    font-size: 1.8rem;
+  }
+}
