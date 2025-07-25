@@ -114,7 +114,7 @@ form button {
   border-radius: 4px;
 }
 
-/* Responsive para móviles */
+/* Responsive para móviles 
 @media (max-width: 768px) {
   table, thead, tbody, th, td, tr {
     display: block;
@@ -154,7 +154,7 @@ form button {
   form label {
     font-size: 2rem;
   }
-}
+}*/
 /* Controles de calendario */
 .calendario-controles {
   display: flex;
